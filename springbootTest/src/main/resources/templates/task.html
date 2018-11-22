@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<td>名称</td>
+				<td>时间</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="task : ${page.rows}">
+                <td th:text="${task.name}"></td>
+                <td th:text="${task.createTime}"></td>
+                <td><a th:href="@{'/workflow/check/'+${task.id}}">审批</a></td>
+             </tr>
+		</tbody>
+	</table>
+</body>
+</html>

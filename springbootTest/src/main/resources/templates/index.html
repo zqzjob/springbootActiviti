@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+<table class="table table-hover table-condensed">
+                <legend>
+                    <strong>用户列表</strong>
+                </legend>
+                <thead>
+                    <tr>
+                        <th>事由</th>
+                        <th>天数</th>
+                        <th>状态</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="leaveBill : ${leaveBills}">
+                        <td th:text="${leaveBill.content}"></td>
+                        <td th:text="${leaveBill.days}"></td>
+                        <td th:text="${leaveBill.stateVo}"></td>
+                        <td th:text="${leaveBill.leaveDate}"></td>
+                        <td th:if="${leaveBill.state == 0}"><a href="#" th:onclick="'javascript:viewImage(\''+${leaveBill.id}+'\')'" >查看流程图</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <img id="img1" alt="" src=""/>
+</body>
+<script type="text/javascript">
+	function viewImage(formId){
+		$("#img1").attr("src","/leaveBill/getImage/"+formId);
+	}
+</script>
+</html>
